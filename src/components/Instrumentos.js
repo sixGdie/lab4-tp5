@@ -14,8 +14,8 @@ class Instrumentos extends Component {
         const { instrumentos } = this.props;
         return (
             <div style={styles.productos}>
-                {instrumentos.instrumentos?.map(el => (
-                    <Instrumento key={el.id} instrumento={el} />
+                {instrumentos.map(instrumento => (
+                    <Instrumento key={instrumento.id} instrumento={instrumento} />
                 ))}
             </div>
         )
