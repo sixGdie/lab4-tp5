@@ -2,24 +2,23 @@ import { Component } from "react";
 import Instrumento from "./Instrumento";
 
 const styles = {
-    productos: {
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-    }
-}
+  instrumentos: {
+    display: "flex",
+    flexWrap: "wrap",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    padding: "10px 15px",
+  },
+};
 
-class Instrumentos extends Component {
-    render() {
-        const { instrumentos } = this.props;
-        return (
-            <div style={styles.productos}>
-                {instrumentos.map(instrumento => (
-                    <Instrumento key={instrumento.id} instrumento={instrumento} />
-                ))}
-            </div>
-        )
-    }
-}
+const Instrumentos = ({ instrumentos }) => {
+  return (
+    <div style={styles.instrumentos}>
+        {instrumentos.map(el => (
+            <Instrumento key={el.id} instrumento={el} />
+        ))}
+    </div>
+  );
+};
 
-export default Instrumentos
+export default Instrumentos;

@@ -1,27 +1,23 @@
-import { Component } from "react";
+import { Component, useState, useEffect } from "react";
 import Instrumentos from "./components/Instrumentos";
 import Layout from "./components/Layout";
-import data from './data/instrumentos.json'
 
-class App extends Component {
-  state = {
-    instrumentos: [],
-  };
-
-  constructor(props) {
-    super(props)
-    this.state = { instrumentos: data.instrumentos }
-  }
-
-  render() {
-    return (
-      <div>
-        <Layout>
-          <Instrumentos instrumentos={this.state.instrumentos} />
-        </Layout>
-      </div>
-    );
-  }
-}
+const App = () => {
+  const [instrumentos, setInstrumentos] = useState(null)
+  useEffect(() => {
+    fetch('data.json')
+      .then(res => res.json())
+      .then(data => {
+        setInstrumentos(data)
+      });
+  }, [])
+  return (
+    <div>
+      <Layout>
+        <Instrumentos instrumentos={instrumentos} />
+      </Layout>
+    </div>
+  );
+};
 
 export default App;
